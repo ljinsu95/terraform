@@ -5,17 +5,17 @@ variable "prefix" {
 
 variable "AWS_ACCESS_KEY_ID" {
   description = "AWS ACCESS KEY"
-  sensitive = true
+  sensitive   = true
 }
 
 variable "AWS_SECRET_ACCESS_KEY" {
   description = "AWS SECRET ACCESS KEY"
-  sensitive = true
+  sensitive   = true
 }
 
 variable "tfe_license" {
   description = "TFE License"
-  sensitive = true
+  sensitive   = true
 }
 
 variable "aws_region" {
@@ -23,12 +23,23 @@ variable "aws_region" {
   description = "aws region"
 }
 
+variable "aws_vpc_cidr" {
+  default = "172.170.0.0/16"
+  description = "AWS VPC CIDR"
+}
+
 ### az, cidr 설정
 variable "map_subnet_az" {
-  type = map(list(object({
-    availability_zone = string
-    cidr_block        = string
-  })))
+  type = map(
+    list(
+      object(
+        {
+          availability_zone = string
+          cidr_block        = string
+        }
+      )
+    )
+  )
 
   default = {
     ## ca-central-1
@@ -64,11 +75,11 @@ variable "map_subnet_az" {
 }
 
 variable "aws_hostingzone" {
-  default = "inside-vault.com"
+  default     = "inside-vault.com"
   description = "AWS Route 53에 등록된 호스팅 영역 명"
 }
 
 variable "pem_key_name" {
-  default = "jinsu"
+  default     = "jinsu"
   description = "AWS PEM KEY 명"
 }

@@ -65,8 +65,8 @@ services:
       # Object storage settings. See the configuration reference for more settings.
       TFE_OBJECT_STORAGE_TYPE: "s3"
       ## aws key
-      #TFE_OBJECT_STORAGE_S3_ACCESS_KEY_ID: "AKIAWEICIKPSKOK37RNP"
-      #TFE_OBJECT_STORAGE_S3_SECRET_ACCESS_KEY: "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"
+      #TFE_OBJECT_STORAGE_S3_ACCESS_KEY_ID: ""
+      #TFE_OBJECT_STORAGE_S3_SECRET_ACCESS_KEY: ""
       TFE_OBJECT_STORAGE_S3_USE_INSTANCE_PROFILE: "true"
       ## S3 리전
       TFE_OBJECT_STORAGE_S3_REGION: "${TFE_OBJECT_STORAGE_S3_REGION}"
@@ -109,5 +109,11 @@ volumes:
   terraform-enterprise-cache:
 EOF
 
-# sudo docker compose up --detach && sudo docker compose logs --follow
+# 컨테이너 백그라운드 실행
+sudo docker compose up --detach
+
+# 컨테이너 로그 조회
+# sudo docker compose logs --follow
+
+# 컨테이너 상태 체크
 # sudo docker compose exec tfe tfe-health-check-status
