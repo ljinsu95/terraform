@@ -1,4 +1,5 @@
 .terraform*
+.DS_STORE
 terraform.tfstate
 terraform.tfvars
 terraform.tfstate.backup
